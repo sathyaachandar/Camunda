@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-21-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Upload Training Participants CSV" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <lightning-input type="file" label="Select CSV File" onchange={handleFileChange} accept=".csv" required></lightning-input>
+            <lightning-button label="Upload" onclick={handleUpload} class="slds-m-top_small" variant="brand"></lightning-button>
+            <template if:true={isLoading}>
+                <div class="slds-spinner_container slds-m-top_small">
+                    <div role="status" class="slds-spinner slds-spinner_medium">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </template>
+            <template if:true={successMessage}>
+                <div class="slds-text-color_success slds-m-top_small">
+                    <lightning-icon icon-name="utility:success" alternative-text="success" size="small"></lightning-icon>
+                    <span>{successMessage}</span>
+                </div>
+            </template>
+            <template if:true={errorMessage}>
+                <div class="slds-text-color_error slds-m-top_small">
+                    <lightning-icon icon-name="utility:error" alternative-text="error" size="small"></lightning-icon>
+                    <span>{errorMessage}</span>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
